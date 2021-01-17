@@ -27,9 +27,17 @@ const config = {
 	validator: {
 		username: {
 			minLength: parseInt(process.env.USERNAME_MIN_LENGTH) || 5,
+			maxLength: parseInt(process.env.USERNAME_MAX_LENGTH) || 30,
 		},
 		password: {
 			minLength: parseInt(process.env.USERNAME_MIN_LENGTH) || 5,
+		},
+	},
+	joi: {
+		options: {
+			abortEarly: false,
+			allowUnknown: true,
+			stripUnknown: true,
 		},
 	},
 };

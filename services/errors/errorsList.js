@@ -12,8 +12,12 @@ const errors = {
 		message: 'User Not Found',
 	},
 	USERNAME_AND_PASSWORD_DIDNT_MATCH: {
-		status: status.NOT_FOUND,
+		status: status.UNAUTHORIZED,
 		message: `Username and Password didn't match`,
+	},
+	GIVEN_USERNAME_IS_ALREADY_EXIST: {
+		status: status.NOT_ACCEPTABLE,
+		message: `Given Username is already exist`,
 	},
 };
 

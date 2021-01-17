@@ -6,30 +6,15 @@ if (localStorage.getItem('token')) {
 	}
 }
 
-function loginResponseHandler(response) {
-	if (response.success) {
-		localStorage.setItem('token', response.token);
-		localStorage.setItem('username', response.username);
-		localStorage.setItem('logedOut', false);
-		window.location.href = '/';
-	} else {
-		alertify.error('Wrong Credentials');
-	}
+function loginAndSignupResponseHandler(response) {
+	localStorage.setItem('token', response.token);
+	localStorage.setItem('username', response.username);
+	localStorage.setItem('logedOut', false);
+	window.location.href = '/';
 }
 
-function signupResponseHandler(response) {
-	if (response.success) {
-		localStorage.setItem('token', response.token);
-		localStorage.setItem('username', response.username);
-		window.location.href = '/';
-	} else {
-		alertify.error(response.error);
-	}
-}
-
-function signupErrorHandler(err) {
-	console.error(err);
-	alertify.error('Unknown Error!');
+function loginAndSignupErrorHandler(err) {
+	alertify.error(err.responseJSON.message);
 }
 
 function loginHandler(e) {
@@ -41,7 +26,8 @@ function loginHandler(e) {
 		type: 'POST',
 		url: '/api/login',
 		data: { username, password },
-		success: loginResponseHandler,
+		success: loginAndSignupResponseHandler,
+		error: loginAndSignupErrorHandler,
 	});
 }
 
@@ -54,8 +40,8 @@ function signupHandler(e) {
 		type: 'POST',
 		url: '/api/signup',
 		data: { username, password },
-		success: signupResponseHandler,
-		error: signupErrorHandler,
+		success: loginAndSignupResponseHandler,
+		error: loginAndSignupErrorHandler,
 	});
 }
 

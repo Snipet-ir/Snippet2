@@ -1,0 +1,12 @@
+{
+	"singleQuote": true,
+	"tabWidth": 4,
+	"printWidth": 120,
+	"arrowParens": "avoid",
+	"bracketSpacing": true,
+	"ignorePath": ".prettierignore",
+	"packageManager": "npm",
+	"semi": true,
+	"withNodeModules": false,
+	"useTabs": true
+}
